@@ -17,7 +17,7 @@ st.title('Salary Prediction')
 # -----------------------------
 # دریافت ورودی‌ها از کاربر
 # -----------------------------
-param1 = st.number_input("'Avg min between sent tnx'",value=0.0, step=0.00001,format="%.5f" )
+param1 = st.number_input("Avg min between sent tnx",value=0.0, step=0.00001,format="%.5f" )
 param2 = st.number_input("Avg min between received tnx",value=0.0, step=0.00001,format="%.5f" )
 param3 = st.number_input("Time Diff between first and last (Mins)",value=0.0, step=0.00001,format="%.5f" )
 param4 = st.number_input("Sent tnx",value=0.0, step=0.00001,format="%.5f" )
@@ -74,7 +74,10 @@ for col, val in row.items():
 def predict(x):          
     # پیش‌بینی
     prediction = model.predict(x)
-    st.write("Fraud Predicted", f"{prediction[0]:,.0f} $")
+    # نگاشت 0 و 1 به متن
+    label = "Yes" if prediction[0] == 1 else "No"
+    st.write("Fraud Predicted : ", label)
+
 
 # -----------------------------
 # دکمه پیش‌بینی
